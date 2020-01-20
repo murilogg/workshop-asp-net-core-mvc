@@ -11,10 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging.Abstractions;
-//using MySQL.Data.EntityFrameworkCore.Extensions;
-//using MySql.Data.MySqlClient;
 
 
 namespace SalesWebMvc
@@ -46,6 +45,7 @@ namespace SalesWebMvc
                     builder.MigrationsAssembly("SalesWebMvc")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

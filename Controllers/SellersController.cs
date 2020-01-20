@@ -7,14 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
 using SalesWebMvc.Models;
+using SalesWebMvc.Services;
 
 namespace SalesWebMvc.Controllers
 {
     public class SellersController : Controller
     {
+        private readonly SellerService _sellerService;
+
+        // Construct
+        public SellersController(SellerService sellerService)
+        {
+            _sellerService = sellerService;
+        }
+
+        // Method Find All 
         public IActionResult Index()
         {
-            return View();
+            var list = _sellerService.FindAll();
+            return View(list);
         }
     }
 }
